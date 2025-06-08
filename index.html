@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redistration-form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+<div>
+    <h1 style="color: rgb(26, 192, 204);">Registration Form</h1>
+    <form>
+        <table>
+            <tr>
+                <td>Name:</td><td><input type="text" placeholder="enter your name" id="name"></td>
+                <td class="nameerror">if the field is empty</td>
+                
+            </tr>
+            <tr>
+                <td>Email:</td><td><input type="text" placeholder="enter your mail" id="email"></td>
+                <td class="emailerror">if the format is incorrect</td>
+            </tr>
+            <tr>
+                <td>Password:</td><td><input type="text" placeholder="password" id="password"></td>
+                <td class="passworderror">if the password is too short</td>
+            </tr>
+            <tr>
+            <td><input style="background-color: rgb(26, 192, 204); color: white; font-size: smaller; margin-top: 10px;" type="Submit" id="submit"></td>
+            </tr>
+
+        </table>
+    </form>    
+</div>
+    
+</body>
+</html>
+<script>
+    var submit = document.getElementById("submit")
+
+    submit.addEventListener("click",function(){
+        event.preventDefault()
+
+        var nameRegex = /^[a-zA-Z]+$/
+        var emailRegex = /^[a-zA-Z0-9]+@gmail\.com$/
+        var passwordRegex = /^\d{6}$/ 
+
+        var name=document.getElementById("name")
+        var password=document.getElementById("password")
+        var email=document.getElementById("email")
+
+        var validate = true
+
+        if(nameRegex.test(name.value) == false)
+        {
+            document.querySelector(".nameerror").style.display="inline"
+            validate = false
+        }
+        else{
+            document.querySelector(".nameerror").style.display="none"
+
+        }   
+        
+        if(emailRegex.test(email.value) == false)
+        {
+            document.querySelector(".emailerror").style.display="inline"
+            validate = false
+        }
+        else{
+            document.querySelector(".emailerror").style.display="none"
+
+        }  
+        
+        if(passwordRegex.test(password.value) == false)
+        {
+            document.querySelector(".passworderror").style.display="inline"
+            validate = false
+        }
+        else{
+            document.querySelector(".passworderror").style.display="none"
+
+        }  
+        
+        if(validate == true)
+        {
+            alert("form Submitted successfully")
+        }
+        
+    })
+    
+</script>
